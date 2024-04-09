@@ -1,29 +1,29 @@
 
-  .notice-board {
-    display: flex; /* Convert to flex container */
-    flex-direction: column; /* Arrange children vertically */
+.popular-post {
     background-color: black;
-    position: absolute;
     padding: 1rem;
     border-radius: 4px;
     top: 6rem;
-    right: 0;
-    width: 250px; /* Adjust width as needed */
+    position: absolute;
+    left: 0;
+    width: 400px; /* Adjust width as needed */
     height: 100vh; /* Set height to 100% viewport height */
     overflow-y: auto; /* Enable scrolling for long notice lists */
-  }
-  
-  .notice-board h2 {
+    display: flex; /* Use flexbox to align content */
+    flex-direction: column; /* Align content vertically */
+}
+
+.popular-post h2 {
     margin-bottom: 1rem;
-  }
-  
-  .notice {
+}
+
+.popular {
     margin-bottom: 1rem;
     border-bottom: 1px solid black;
     padding-bottom: 0.5rem;
-  }
-  
-  .notice h3 {
+}
+
+.notice h3 {
     font-weight: bold;
     margin-bottom: 0.25rem;
-  }
+}
