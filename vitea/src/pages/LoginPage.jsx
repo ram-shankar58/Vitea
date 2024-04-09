@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import logo from '../assets/vitea-logo.png';
 
 const LoginPage = () => {
-    const useHistory = useHistory();
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -34,7 +35,7 @@ const LoginPage = () => {
         .then(data => {
             // Store the authentication token in local storage
             localStorage.setItem('authToken', data.token);
-            history.push('/home');
+            navigate('/home');
         })
         .catch((error) => {
             console.error('Error:', error);
