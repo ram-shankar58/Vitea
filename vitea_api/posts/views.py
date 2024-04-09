@@ -18,16 +18,18 @@ class CreatePostView(APIView):
     def post(self, request):
         title = request.data.get('title')
         content = request.data.get('content')
+        description = request.data.get('description')  # Added description field
         board = request.data.get('board', 'General')
         upvotes = request.data.get('upvotes', 0)
         downvotes = request.data.get('downvotes', 0)
 
-        if not title or not content:
+        if not title or not content or not description:  # Check if description is provided
             return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
         post = Post.objects.create(
             title=title,
             content=content,
+            description=description,  # Added description field
             board=board,
             upvotes=upvotes,
             downvotes=downvotes,
@@ -40,6 +42,7 @@ class CreatePostView(APIView):
             "id": post.id,
             "title": post.title,
             "content": str(post.content),
+            "description": str(post.description),  # Added description field
             "board": post.board,
             "upvotes": post.upvotes,
             "downvotes": post.downvotes,
@@ -63,6 +66,7 @@ class PostDetailView(APIView):
             "id": post.id,
             "title": post.title,
             "content": str(post.content),
+            "description": str(post.description),  # Added description field
             "board": post.board,
             "upvotes": post.upvotes,
             "downvotes": post.downvotes,
@@ -75,12 +79,14 @@ class PostDetailView(APIView):
         post = self.get_object(pk)
         title = request.data.get('title', post.title)
         content = request.data.get('content', post.content)
+        description = request.data.get('description', post.description)  # Added description field
         board = request.data.get('board', post.board)
         upvotes = request.data.get('upvotes', post.upvotes)
         downvotes = request.data.get('downvotes', post.downvotes)
 
         post.title = title
         post.content = content
+        post.description = description  # Added description field
         post.board = board
         post.upvotes = upvotes
         post.downvotes = downvotes
@@ -92,6 +98,7 @@ class PostDetailView(APIView):
                 "id": post.id,
                 "title": post.title,
                 "content": str(post.content),
+                "description": str(post.description),  # Added description field
                 "board": post.board,
                 "upvotes": post.upvotes,
                 "downvotes": post.downvotes,
