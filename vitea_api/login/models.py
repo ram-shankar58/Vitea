@@ -32,6 +32,7 @@ class User(AbstractUser):
         default=STUDENT,
     )
 
+    description = models.TextField(null=True, blank=True)
     campus = models.CharField(max_length=255)
     phone_no = models.CharField(max_length=20)
     regno = models.CharField(max_length=20)

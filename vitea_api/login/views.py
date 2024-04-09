@@ -35,7 +35,7 @@ class CreateUserView(APIView):
         phone_no = request.data.get("phone_no")
         role = request.data.get("role")
         campus = request.data.get("campus")
-
+        description = request.data.get("description")
 
         if not username or not password or not email:
             return Response(
@@ -60,7 +60,8 @@ class CreateUserView(APIView):
             sex=sex, 
             phone_no=phone_no, 
             role=role, 
-            campus=campus
+            campus=campus,
+            description=description
         )
 
         return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
