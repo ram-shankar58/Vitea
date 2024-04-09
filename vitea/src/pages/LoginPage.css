@@ -1,0 +1,47 @@
+.logo {
+    width: 130%;
+    height: auto;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Form */
+.login-form {
+    width: 100%;
+    padding: 20px;
+    background-color: #101749;
+    border-radius: 5px;
+}
+
+/* Form Inputs */
+.login-form input {
+    width: 80%;
+    padding: 10px;
+    margin: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+/* Submit Button */
+.login-form button {
+    width: 50%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Error Message */
+.login-form .error-message {
+    color: red;
+    margin-bottom: 10px;
+}
