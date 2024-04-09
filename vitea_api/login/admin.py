@@ -8,13 +8,13 @@ from django.contrib.auth.models import Group
 User = get_user_model() 
 
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'campus', 'phone_no', 'regno', 'year')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'campus', 'phone_no', 'regno', 'year', 'description')
     search_fields = ('username', 'email', 'first_name', 'last_name', 'campus', 'phone_no', 'regno')
     ordering = ('username',)
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'campus', 'phone_no', 'regno')}),
+        (('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'campus', 'phone_no', 'regno', 'description')}),
         (('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
