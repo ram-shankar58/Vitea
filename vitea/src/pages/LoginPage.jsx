@@ -33,8 +33,7 @@ const LoginPage = () => {
         })
         .then(response => response.json())
         .then(data => {
-            // Store the authentication token in local storage
-            localStorage.setItem('authToken', data.token);
+            localStorage.setItem('authToken', data.access);
             navigate('/home');
         })
         .catch((error) => {
