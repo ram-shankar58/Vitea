@@ -3,6 +3,7 @@ import './LoginPage.css';
 import logo from '../assets/vitea-logo.png';
 
 const LoginPage = () => {
+    const useHistory = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,7 +17,28 @@ const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your login logic here
+    
+        const data = {
+            username,
+            password
+        };
+    
+        fetch('http://localhost:8000/login/token/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Store the authentication token in local storage
+            localStorage.setItem('authToken', data.token);
+            history.push('/home');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     };
 
     return (
@@ -24,8 +46,8 @@ const LoginPage = () => {
             <img src={logo} alt="Vitea Logo" className='logo'/>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label>
-                    Email:
-                    <input type="email" value={username} onChange={handleUsernameChange} className="login-form input" />
+                    Username:
+                    <input type="text" value={username} onChange={handleUsernameChange} className="login-form input" />
                 </label>
                 <br />
                 <label>

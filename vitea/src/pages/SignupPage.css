@@ -1,8 +1,7 @@
 /* SignupPage.css */
 
 .logo {
-    width: 100%;
-    height: auto;
+    width: 300px;
 }
 
 /* Container styles */
@@ -20,6 +19,15 @@
     padding: 20px;
     background-color: #101749;
     border-radius: 5px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row .form-group {
+    width: 48%;
 }
 
 /* Form Inputs */
