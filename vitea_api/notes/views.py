@@ -2,6 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Notes
+from django.http import HttpResponse
+
 from django.shortcuts import get_object_or_404
 
 class NoteListCreateAPIView(APIView):
@@ -42,3 +44,15 @@ class NoteDetailAPIView(APIView):
         note = get_object_or_404(Notes, pk=pk)
         note.delete()
         return Response({"message": "Note deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+
+class NoteDownloadAPIView(APIView):
+    def get(self, request, pk):
+        note = get_object_or_404(Notes, pk=pk)
+        if not note.content:
+            return HttpResponse("Note content not found", status=status.HTTP_404_NOT_FOUND)
+
+        file_path = note.content.path  # Assuming `content` is a FileField
+        with open(file_path, 'rb') as file:
+            response = HttpResponse(file.read(), content_type='application/octet-stream')
+            response['Content-Disposition'] = f'attachment; filename="{note.title}.pdf"'  # Adjust filename as needed
+            return response
