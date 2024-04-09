@@ -3,10 +3,28 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Post(models.Model):
+
+    boards = [
+        ('General', 'General'),
+        ('Academic', 'Academic'),
+        ('Entertainment', 'Entertainment'),
+        ('Sports', 'Sports'),
+        ('Politics', 'Politics'),
+        ('Religion', 'Religion'),
+        ('Technology', 'Technology'),
+        ('Health', 'Health'),
+        ('Fashion', 'Fashion'),
+        ('Business', 'Business'),
+        ('Science', 'Science'),
+        ('Agriculture', 'Agriculture'),
+        ('Hackclub', 'Hackclub'),
+    ]
+
     title = models.CharField(max_length=255)
     content = models.ImageField(upload_to='posts/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    board = models.CharField(max_length=255, choices=boards, default='General')
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

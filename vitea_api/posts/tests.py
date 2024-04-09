@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from .models import Post, Comment
 from django.contrib.auth import get_user_model
-
+ 
 class PostModelTests(TestCase):
 
     def setUp(self):
