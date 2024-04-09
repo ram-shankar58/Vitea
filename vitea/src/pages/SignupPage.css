@@ -1,0 +1,55 @@
+/* SignupPage.css */
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form styles */
+.form {
+    width: 100%;
+    padding: 20px;
+    background-color: #101749;
+    border-radius: 5px;
+}
+
+/* Form Inputs */
+.form-group input {
+    width: 80%;
+    padding: 10px;
+    margin: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+/* Submit Button */
+.form-group input[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Success message styles */
+.success-message {
+    color: green;
+    margin-top: 10px;
+}
