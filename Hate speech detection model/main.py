@@ -20,9 +20,9 @@ def preprocess_text(text):
     return processed_text
 
 def predict_hate_speech(text):
-    model = joblib.load('model/hatemodellatest.pkl')
+    model = joblib.load('Hate speech detection model\model\hatemodellatest.pkl')
 
-    tfidf_vectorizer = joblib.load('model/tfidifsecond.joblib')
+    tfidf_vectorizer = joblib.load('Hate speech detection model/model/tfidifsecond.joblib')
     
     processed_text = preprocess_text(text)
     
