@@ -5,6 +5,7 @@
     "express": "^4.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "typescript": "^5.4.4"
   },
   "devDependencies": {
