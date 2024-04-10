@@ -22,14 +22,21 @@ const Navbar = () => {
           className="search-bar"
         />
       </div>
-      <img src={ProfileImage} alt="Profile Picture" className="profile-icon" /> {/* Replace "profile.png" with your default profile image path */}
+      <img src={ProfileImage} alt="Profile Picture" className="profile-icon" />
+      
+       {/* Replace "profile.png" with your default profile image path */}
       <ul className="nav-links">
         {/* ... your navigation links ... */}
       </ul>
+      <button className='nii'>
+   Logout
+</button>
+      
     </nav>
 
 
   );
 };
+
 
 export default Navbar;
