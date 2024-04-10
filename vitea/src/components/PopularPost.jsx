@@ -5,17 +5,17 @@ const PopularPost = () => {
   const [posts, setPosts] = useState([
     {
       id: 1,
-      title: 'Top 10 JavaScript Frameworks',
+      title: 'General',
       content: 'Check out this list of the top 10 JavaScript frameworks for web development.',
     },
     {
       id: 2,
-      title: 'React vs Angular: Which one to choose?',
+      title: 'Academic',
       content: 'Learn about the differences between React and Angular and decide which one is best for your project.',
     },
     {
       id: 3,
-      title: 'Getting Started with Node.js',
+      title: 'Sports',
       content: 'A beginner\'s guide to getting started with Node.js and building server-side applications.',
     },
   ]);
@@ -26,17 +26,12 @@ const PopularPost = () => {
 
 return (
     <div className="popular-post">
-        <h2>Popular Posts</h2>
-        <ul>
-            {posts.map((post) => (
-                <div key={post.id} className="post">
-                    <a href="/login"><h3>{post.title}</h3></a>
-                    <p>{post.content}</p>
-                    
-                </div>
-                
-            ))}
-        </ul>
+        <a href=""><h2>General</h2></a>
+        <a href=""><h2>Academic</h2></a>
+        <a><h2>Sports</h2></a>
+        <a><h2>Entertainment</h2></a>
+        <a href=""><h2>Science</h2></a>
+        <a href=""><h2>Business</h2></a>
         <a><h2>Study Material</h2></a>
         <a><h2>Clubs</h2></a>
         <div className="box">

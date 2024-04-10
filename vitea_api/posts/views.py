@@ -265,7 +265,7 @@ class CreateReplyView(APIView):
         except Post.DoesNotExist:
             return Response({"error": "Post not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        reply = Reply.objects.create(
+        reply = Comment.objects.create(
             content=content,
             post=post,
             author=request.user,
