@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import PopularPost from '../components/PopularPost';
 import NoticeBoard from '../components/NoticeBoard';
+import PostSection from '../components/PostSection';
+
 import './HomePage.css'; // Import the CSS file
 const HomePage = () => {
   const [showAdStrip, setShowAdStrip] = useState(true);
@@ -46,6 +48,7 @@ const HomePage = () => {
       )}
       <NoticeBoard />
       <PopularPost />
+      <PostSection />
     </>
   );
 };

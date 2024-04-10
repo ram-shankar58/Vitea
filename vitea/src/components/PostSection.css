@@ -1,0 +1,122 @@
+/* PostSection.css */
+
+.post-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .create-post-button {
+    padding: 20px 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    
+    cursor: pointer;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 70%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-content {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    margin-bottom: 15px;
+  }
+  
+  .post-media {
+    margin-bottom: 15px;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    
+    cursor: pointer;
+    margin: 0 5px;
+    background-color:white;
+  }
+  
+  .modal-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .modal-button.primary {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  .modal-button.primary:hover {
+    background-color: #3e8e41;
+  }
+  .train {
+    background-color: black;
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    color: white;
+    height: 80px;
+  }
+  .puma {
+    background-color: black;
+    text-align: center;
+    font-size: 71px;
+    width: 100%;
+    
+    height: 100px;
+  }
+  .search-bar-container {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .buttons{
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    margin-right: 15px;
+
+  }
+  .buttons button {
+    padding: 10px 20px; 
+    margin-right: 10px;
+    background-color: black; /* Add padding inside each button */
+  }
