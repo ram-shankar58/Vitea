@@ -1,25 +1,25 @@
 .ad-strip {
-    display: flex;
-    justify-content: center; /* Align items horizontally in the center */
-    align-items: center; /* Align items vertically in the center */
-    position:absolute;
-    left:380px;
-    width:60%;
-    top:100px;
-    height: 20%;
-    background-color: lightcoral;
-    background-blend-mode: luminosity;
-  }
-  
-  .ad {
-    width: 30%; /* Adjust the width of each ad as needed */
-    height: 100%; /* Adjust the height of each ad as needed */
-    border: 1px solid black; /* Add a border to each ad */
-   
-    color: black;
-  }
-  
-  .ad > p{
-    color:purple;
+  display: flex;
+  justify-content: center; /* Align items horizontally in the center */
+  align-items: center; /* Align items vertically in the center */
+  position:absolute;
+  left:380px;
+  width:60%;
+  top:100px;
+  height: 20%;
+  background-color: lightcoral;
+  background-blend-mode: luminosity;
+}
 
-  }
+.ad {
+  width: 30%; /* Adjust the width of each ad as needed */
+  height: 100%; /* Adjust the height of each ad as needed */
+  border: 1px solid black; /* Add a border to each ad */
+ 
+  color: black;
+}
+
+.ad > p{
+  color:purple;
+
+}
