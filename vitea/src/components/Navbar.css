@@ -12,6 +12,11 @@
     z-index: 999;
 }
 
+.nii {
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-right: 90px;
+}
 .styled-logo {
   width: 150px;
   height: auto;
