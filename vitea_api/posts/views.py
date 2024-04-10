@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
+from django.db.models import Count
 from .models import Post, Comment
 
 def get_comment(pk):
@@ -194,3 +195,89 @@ class CommentDetailView(APIView):
         comment = self.get_object(pk)
         comment.delete()
         return Response({"message": "Comment deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+    
+class BoardPostsView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        board = request.query_params.get('board', None)
+        if not board:
+            return Response({"error": "Missing required query parameter: 'board'"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            posts = Post.objects.filter(board=board)
+        except Post.DoesNotExist:
+            raise Http404
+
+        posts_data = [{
+            "id": post.id,
+            "title": post.title,
+            "content": str(post.content),
+            "description": str(post.description),
+            "board": post.board,
+            "upvotes": post.upvotes,
+            "downvotes": post.downvotes,
+            "author": post.author.username,
+            "created_at": post.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            "updated_at": post.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+        } for post in posts]
+
+        return Response(posts_data, status=status.HTTP_200_OK)
+    
+class TopPostsView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        boards = Post.objects.values('board').annotate(total=Count('board')).order_by('-total')
+
+        top_posts = []
+        for board in boards:
+            posts = Post.objects.filter(board=board['board']).order_by('-upvotes')[:5]
+            posts_data = [{
+                "id": post.id,
+                "title": post.title,
+                "content": str(post.content),
+                "description": str(post.description),
+                "board": post.board,
+                "upvotes": post.upvotes,
+                "downvotes": post.downvotes,
+                "author": post.author.username,
+                "created_at": post.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+                "updated_at": post.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+            } for post in posts]
+            top_posts.append({board['board']: posts_data})
+
+        return Response(top_posts, status=status.HTTP_200_OK)
+    
+
+class CreateReplyView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        post_id = request.data.get('post_id')
+        content = request.data.get('content')
+
+        if not post_id or not content:
+            return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            post = Post.objects.get(id=post_id)
+        except Post.DoesNotExist:
+            return Response({"error": "Post not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        reply = Comment.objects.create(
+            content=content,
+            post=post,
+            author=request.user,
+            created_at=timezone.now(),
+            updated_at=timezone.now()
+        )
+
+        return Response({"message": "Reply created successfully", "reply": {
+            "id": reply.id,
+            "content": str(reply.content),
+            "post_id": reply.post.id,
+            "author": reply.author.username,
+            "created_at": reply.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            "updated_at": reply.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+        }}, status=status.HTTP_201_CREATED)

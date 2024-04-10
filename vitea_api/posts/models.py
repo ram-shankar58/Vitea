@@ -9,7 +9,6 @@ class Post(models.Model):
         ('Academic', 'Academic'),
         ('Entertainment', 'Entertainment'),
         ('Sports', 'Sports'),
-        ('Politics', 'Politics'),
         ('Religion', 'Religion'),
         ('Technology', 'Technology'),
         ('Health', 'Health'),
